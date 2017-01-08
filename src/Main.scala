@@ -2,7 +2,6 @@ package com.keithblaha
 
 import flat._
 import flat.utils.HttpClient
-import monix.eval.Task
 import scala.util.{Failure, Success}
 
 object Main extends App with FlatApp {
@@ -23,14 +22,14 @@ object Main extends App with FlatApp {
   app.post("/gizoogle/textilizer") { request =>
     HttpClient.post("http://gizoogle.net/textilizer.php", List("translatetext" -> request.bodyOpt.get)).map {
       case Success(response) =>
-        OK(Html(response.bodyOpt.get))
+        Ok(Html(response.bodyOpt.get))
       case Failure(e) =>
         InternalServerError(e.getMessage)
     }
   }
 
   app.get("/") { request =>
-    OK("hello")
+    Ok("hello")
   }
 
   app.start
