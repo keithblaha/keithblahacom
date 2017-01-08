@@ -12,7 +12,7 @@ lazy val root = (project in file("."))
     resourceDirectory in Test := baseDirectory.value / "test" / "resources",
 
     libraryDependencies ++= Seq(
-      "flat" %% "flat" % "0.4.0"
+      "flat" %% "flat" % "0.5.0"
     ),
 
     fork in Test := true,
